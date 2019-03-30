@@ -47,4 +47,3 @@ jacocoTestReport{
                 xml.enabled = true
             }
 }
-test.finalizedBy jacocoTestReport 
