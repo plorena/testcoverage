@@ -4,4 +4,12 @@ public class Multiplication implements Operation {
         return i*j;
     }
 
+    public Integer operation2(int i, int j) {
+        return i*j;
+    }
+
+
+    public Integer operation3(int i, int j) {
+        return i*j;
+    }
 }
