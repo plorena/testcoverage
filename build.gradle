@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 group 'groupid2'
@@ -10,6 +11,11 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+
+ext {
+    jacocoVersion = '0.8.3'
+}
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -28,3 +34,17 @@ task run_test(type: Test) {
         logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
 }
+
+jacoco {
+    toolVersion = jacocoVersion
+}
+
+jacocoTestReport{
+    reports
+            {
+                html.enabled = true
+                csv.enabled = true
+                xml.enabled = true
+            }
+}
+test.finalizedBy jacocoTestReport 
