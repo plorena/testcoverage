@@ -14,3 +14,20 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task run_test(type: Test) {
+    doFirst {
+        systemProperty("runid", "$runid")
+    }
+    filter {
+        includeTestsMatching "*Test"
+        includeTestsMatching "*test"
+        exclude "*addLabels"
+    }
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: " + descriptor)
+    }
+    afterTest { desc, result ->
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}
