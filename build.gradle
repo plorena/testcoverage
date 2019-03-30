@@ -16,9 +16,6 @@ dependencies {
 }
 
 task run_test(type: Test) {
-    doFirst {
-        systemProperty("runid", "$runid")
-    }
     filter {
         includeTestsMatching "*Test"
         includeTestsMatching "*test"
